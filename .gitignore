@@ -1,0 +1,6 @@
+git init
+git add .
+git commit -m "Actividades 1-4: streams de lectura, escritura, compresion y backpressure"
+git branch -M main
+git remote add origin https://github.com/juniorcueva-star/semana03_des_web_avnz.git
+git push -u origin main
