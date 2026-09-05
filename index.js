@@ -29,3 +29,22 @@ writable.on('drain', () => {
 });
 
 
+// TAREA 1
+
+const { Transform } = require('stream');
+
+const transformStream = new Transform({
+    transform(chunk, encoding, callback) {
+        callback(null, chunk.toString().toUpperCase());
+    }
+});
+
+const readStreamTexto = fs.createReadStream('texto.txt');
+const writeStreamTexto = fs.createWriteStream('texto_mayusculas.txt');
+
+readStreamTexto.pipe(transformStream).pipe(writeStreamTexto);
+
+writeStreamTexto.on('finish', () => console.log('Transformacion completada'));
+readStreamTexto.on('error', err => console.error('Error de lectura:', err));
+
+
